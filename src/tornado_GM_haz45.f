@@ -4,9 +4,9 @@
       include 'tornado.h'
       
       real*8 haz(MAX_PROB, MAX_ATTENTYPE, MAX_ATTEN, MAX_INTEN)
-      real haz_GMC(MAX_NODE, MAX_BR, MAX_INTEN) 
+      real*8 haz_GMC(MAX_NODE, MAX_BR, MAX_INTEN) 
       real*8 haz1(MAX_INTEN), haz2(MAX_INTEN)
-      real testInten(MAX_INTEN)
+      real*8 testInten(MAX_INTEN)
       integer nInten
       integer iInten, iBR, jj
       character*80 filein, file1
@@ -253,9 +253,10 @@ c      First find the GM for the mean hazard, interpolated to desired haz level
        iFlag = 0
        do iInten=2,nInten
          if ( hazmean(iInten-1) .ge. hazLevel .and. hazmean(iInten) .le. hazLevel ) then
-          GM0 = exp( alog(hazLevel / hazmean(iInten-1)) / 
-     1                  alog( hazmean(iInten)/ hazmean(iInten-1))
-     2                  * alog( testInten(iInten)/testInten(iInten-1) ) + alog(testInten(iInten-1)) )
+          GM0 = exp( log(hazLevel / hazmean(iInten-1)) / 
+     1                  log( hazmean(iInten)/ hazmean(iInten-1))
+     2                  * log( testInten(iInten)/testInten(iInten-1) )
+     3                  + log(testInten(iInten-1)) )
          iFlag = 1
          endif
         enddo
@@ -277,9 +278,10 @@ c           Interpolate
             do iInten=2,nInten
               if ( haz_GMC(iNode,iBR,iInten-1) .ge. hazLevel
      1        .and. haz_GMC(iNode,iBR,iInten)  .le. hazLevel ) then
-                 GM1 = exp( alog(hazLevel / haz_GMC(iNode,iBR,iInten-1)) / 
-     1                  alog( haz_GMC(iNode,iBR,iInten)/ haz_GMC(iNode,iBR,iInten-1))
-     2                  * alog( testInten(iInten)/testInten(iInten-1) ) + alog(testInten(iInten-1)) )
+                 GM1 = exp( log(hazLevel / haz_GMC(iNode,iBR,iInten-1)) / 
+     1                  log( haz_GMC(iNode,iBR,iInten)/ haz_GMC(iNode,iBR,iInten-1))
+     2                  * log( testInten(iInten)/testInten(iInten-1) )
+     3                  + log( testInten(iInten-1)) )
                  GM_ratio(k) = GM1 / GM0
                  goto 995 
               endif
