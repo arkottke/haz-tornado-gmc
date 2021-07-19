@@ -8,13 +8,8 @@ c     Last modified: 8/15   ggm_wt
       real*8 haz(MAX_PROB, MAX_ATTENTYPE, MAX_ATTEN, MAX_INTEN)
       real*8 haz_GMC(MAX_NODE, MAX_BR, MAX_INTEN) 
       real*8 haz1(MAX_INTEN), haz2(MAX_INTEN)
-<<<<<<< HEAD:src/tornado_GM_haz45.f
-      real testInten(MAX_INTEN)
-      integer nInten, jcalc(MAX_ATTENTYPE,MAX_ATTEN), nFlt, iflt
-=======
       real*8 testInten(MAX_INTEN)
-      integer nInten
->>>>>>> develop:GMC_Tornado Files/tornado_GM_haz45.f
+      integer nInten, jcalc(MAX_ATTENTYPE,MAX_ATTEN), nFlt, iflt
       integer iInten, iBR, jj
       character*80 filein, file1
       character*80 dummy
@@ -258,17 +253,11 @@ c      Interpolate the desired hazard level for tornado plot
 c      First find the GM for the mean hazard, interpolated to desired haz level
        do iInten=2,nInten
          if ( hazmean(iInten-1) .ge. hazLevel .and. hazmean(iInten) .le. hazLevel ) then
-<<<<<<< HEAD:src/tornado_GM_haz45.f
-          GM0 = exp( alog(real(hazLevel / hazmean(iInten-1))) / 
-     1                  alog(real(hazmean(iInten) / hazmean(iInten-1)))
-     2                  * alog( testInten(iInten)/testInten(iInten-1) ) + alog(testInten(iInten-1)) )
-=======
           GM0 = exp( log(hazLevel / hazmean(iInten-1)) / 
      1                  log( hazmean(iInten)/ hazmean(iInten-1))
      2                  * log( testInten(iInten)/testInten(iInten-1) )
      3                  + log(testInten(iInten-1)) )
          iFlag = 1
->>>>>>> develop:GMC_Tornado Files/tornado_GM_haz45.f
          endif
         enddo
 
