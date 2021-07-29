@@ -17,7 +17,7 @@
           call Rd_Fault_Data_45_1 (nFltTotal,nFlt0, cumWt_segModel, cumWt_param, 
      1           cumWt_width, probAct, nParamVar, AttenType, cumwt_Ftype, 
      2           nFtype, nWidth, nSegModel, f_start, f_num, faultFlag, al_Segwt )
-        elseif (version .eq. 45.2) then
+        elseif (version .eq. 45.3) then
           call Rd_Fault_Data_45_2 (nFltTotal,nFlt0, cumWt_segModel, cumWt_param, 
      1           cumWt_width, probAct, nParamVar, AttenType, cumwt_Ftype, 
      2           nFtype, nWidth, nSegModel, f_start, f_num, faultFlag, al_Segwt )

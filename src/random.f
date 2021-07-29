@@ -81,7 +81,7 @@ c     Get random number
 c ----------------------------
       subroutine GetRandom2 ( iseed, n, wt, i1, i2, iSave, n1, n2, name )
 
-      include 'tornado.h'
+      include 'tornado.H'
 
       real wt(n1, n2, MAXPARAM), x
       integer n1, n2, n, iseed, i1, i2
@@ -109,7 +109,7 @@ c     Get random number
 c ----------------------------
       subroutine GetRandom3 ( iseed, n, wt, i1, i2, i3, iSave, n1, n2, n3 )
 
-      include 'tornado.h'
+      include 'tornado.H'
 
       real wt(n1, n2, n3, MAXPARAM), x
       integer n1, n2, n3

@@ -4,7 +4,7 @@
       include 'tornado.h'
       integer iAtten(4,MAX_MED,MAX_epistemic,MAX_SIGMA)
       integer nBR_GMC(3), nFlt, attenTYpe(MAX_FLT), nInten, jtype
-      integer iBR1, iBR2, iBR3, kFlt, i, jAtten,k
+      integer iBR1, iBR2, iBR3, kFlt, i, jAtten
       real haz(MAX_INTEN,MAX_ATTEN, MAX_FLT)
       real*8 haz1(MAX_INTEN) 
       real wt1(4,MAX_ATTEN)
@@ -27,9 +27,9 @@ c         pause 'jatten, jType, iBR1, iBr2, iBR2'
          do kFlt=1,nFlt
           do i=1,nInten           
            haz1(i)= haz1(i) + haz(i,jAtten,kFlt)*wt1(AttenType(kFlt),jAtten)
-C           if (i .eq. 1) then
-C           write (*,*) iBr1, iBr2, iBr3, kFlt, jatten,i, haz(i,jAtten,kFlt), wt1(AttenType(kFlt),jAtten), haz1(i)
-C           endif
+c           if (i .eq. 1) then
+c          write (*,*) iBr1, iBr2, iBr3, kFlt, jatten,i, haz(i,jAtten,kFlt), wt1(AttenType(kFlt),jAtten), haz1(i)
+c           endif
           enddo
          enddo
 
@@ -38,7 +38,7 @@ C           endif
        enddo
       enddo 
 
-C        pause 'hazcalc2'
+        pause 'hazcalc2'
       
       return
       end
