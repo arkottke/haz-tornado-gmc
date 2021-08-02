@@ -15,8 +15,8 @@
       integer jAttenType, jAtten, jType, iAtten, kType, iNode1
       real wt_tree(MAX_NODE,MAX_BR), wt1(MAX_ATTENTYPE, MAX_ATTEN)
 
-      real*8 hazmean(MAX_INTEN) 
-      real*8 hazmean1(MAX_ATTENTYPE,MAX_INTEN)
+      real*4 hazmean(MAX_INTEN) 
+      real*4 hazmean1(MAX_ATTENTYPE,MAX_INTEN)
       integer nProb, nSite, iSite
  
       real lgTestInten(MAX_INTEN), period
